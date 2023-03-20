@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
+
 const app = express();
 
 const PORT = 5000;
@@ -7,6 +9,7 @@ const url = "http://172.17.0.1";
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "public")));
 
 const getCities = async () => {
   try {
@@ -31,6 +34,10 @@ const getAdjectives = async () => {
 };
 
 app.get("/", async (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.get("/sentence", async (req, res) => {
   let city;
   let adjective;
   city = await getCities();
