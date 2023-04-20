@@ -34,10 +34,6 @@ const getAdjectives = async () => {
 };
 
 app.get("/", async (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-app.get("/sentence", async (req, res) => {
   let city;
   let adjective;
   city = await getCities();
