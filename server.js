@@ -5,7 +5,7 @@ const path = require("path");
 const app = express();
 
 const PORT = 5000;
-const url = "http://172.17.0.1";
+const url = "http://localhost";
 
 app.use(express.json());
 app.use(cors());
