@@ -4,15 +4,13 @@ const path = require("path");
 
 const app = express();
 
-const url = "http://localhost";
-
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
 const getCities = async () => {
   try {
-    const res = await fetch(`${url}:5001/city`);
+    const res = await fetch(`${process.env.CITY_URL}:5001/city`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -23,7 +21,7 @@ const getCities = async () => {
 
 const getAdjectives = async () => {
   try {
-    const res = await fetch(`${url}:5002/adjective`);
+    const res = await fetch(`${process.env.ADJECTIVE_URL}:5002/adjective`);
     const data = await res.json();
     return data;
   } catch (err) {
